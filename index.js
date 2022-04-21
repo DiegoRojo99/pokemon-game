@@ -114,7 +114,7 @@ const keys = {
     }
 }
 
-const movables = [background, ]
+const movables = [background, ...boundaries]
 function rectangularCollisions({ r1,r2}){
     return (
         r1.position.x + r1.width >= r2.position.x && 
@@ -127,19 +127,20 @@ function rectangularCollisions({ r1,r2}){
 function animate(){
     window.requestAnimationFrame(animate)
     background.draw()
-    /*
+    
     boundaries.forEach(Boundary => {
         Boundary.draw()
+        if(rectangularCollisions({
+            r1: player, 
+            r2: Boundary
+         })){
+            console.log('colliding')
+        }
     })
-    */
+    
    player.draw()
 
-   if(rectangularCollisions({
-       r1:player, 
-       r2:testBoundary
-    })){
-       console.log('colliding')
-   }
+   
 
     if(keys.w.pressed && lastKey === 'w'){ 
         movables.forEach(movable => {
