@@ -129,8 +129,12 @@ function rectangularCollisions({ r1,r2}){
         )
 }
 
+const battle={
+    initiated:false
+}
+
 function animate(){
-    window.requestAnimationFrame(animate)
+    const animationId = window.requestAnimationFrame(animate)
     background.draw()
     
     boundaries.forEach(Boundary => {
@@ -143,6 +147,13 @@ function animate(){
    player.draw()
    foreground.draw()
 
+   
+   let moving = true
+   player.moving=false
+
+   if(battle.initiated) return
+
+   //ACtivate a battle
    if(keys.w.pressed || keys.a.pressed || keys.s.pressed || keys.d.pressed){
     for( let i = 0; i < battleZones.length; i++){
         const bz =  battleZones[i]
@@ -155,16 +166,33 @@ function animate(){
         if(rectangularCollisions({
             r1: player, 
             r2: bz
-         }) && overlappingArea > (player.width * player.height) / 2 && Math.random() < 0.01
-         ){
-             console.log("BZ Activation")
+         }) && 
+         overlappingArea > (player.width * player.height) / 2 && Math.random() < 0.01){
+
+            
+            // deactivate current animation loop
+            window.cancelAnimationFrame(animationId)
+            battle.initiated=true
+            gsap.to('#overlappingDiv',{
+                opacity: 1,
+                repeat: 3,
+                yoyo: true,
+                duration: 0.4,
+                onComplete(){
+                    gsap.to('#overlappingDiv', {
+                        opacity: 1,
+                        duration: 0.4
+                    })
+
+                    // activate a new animation loop
+                    animateBattle()
+                }
+            })
             break
         }
     }
    }
    
-    let moving = true
-    player.moving=false
     if(keys.w.pressed && lastKey === 'w'){ 
         player.moving=true
         player.image = player.sprites.up
@@ -251,7 +279,11 @@ function animate(){
         }
     }
 }
+
 animate()
+function animateBattle(){
+    window.requestAnimationFrame(animateBattle)
+}
 
 lastKey=''
 window.addEventListener('keydown',(e) => {
