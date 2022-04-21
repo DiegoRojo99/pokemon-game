@@ -3,8 +3,21 @@
         background-color: black;
     }
 </style>
-
+<div style="display: inline-block; position: relative;">
+    <div 
+    id="overlappingDiv"
+    style="background-color: black; position: absolute; top:0; right: 0; 
+    bottom: 0; left: 0; opacity: 0; pointer-events: none;"></div>
 <canvas></canvas>
+</div>
+
+<script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js" 
+    integrity="sha512-6zTDRWNxo8vI6JZYDCwhrJpg5icK3P4HNnW3czsO5Scb3lAoPDam+/wF3eog4hxcl0h44d0XlIcFkuoSaWHQ2g==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer">
+</script>
+<script src="./data/battleZones.js"></script>
 <script src="./data/collisions.js"></script>
 <script src="classes.js"></script>
 <script src="index.js"></script>
