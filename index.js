@@ -45,8 +45,6 @@ collisionsMap.forEach((row,i) => {
     })
 })
 
-console.log(boundaries)
-
 const backgroundImage = new Image()
 backgroundImage.src='./img/PelletTown.png'
 
@@ -61,8 +59,6 @@ class Sprite{
         this.image.onload = () => {
             this.width = this.image.width / this.frames.max
             this.height = this.image.height
-            console.log(this.width)
-            console.log(this.height)
         }
     }
 
@@ -130,22 +126,32 @@ function animate(){
     
     boundaries.forEach(Boundary => {
         Boundary.draw()
-        if(rectangularCollisions({
-            r1: player, 
-            r2: Boundary
-         })){
-            console.log('colliding')
-        }
     })
     
    player.draw()
 
    
-
+    let moving = true
     if(keys.w.pressed && lastKey === 'w'){ 
-        movables.forEach(movable => {
-            movable.position.y += 3
-        })
+        for( let i = 0; i < boundaries.length; i++){
+            const boundary =  boundaries[i]
+            if(rectangularCollisions({
+                r1: player, 
+                r2: {...boundary, position: {
+                    x: boundary.position.x,
+                    y: boundary.position.y + 3
+                }}
+             })){
+                console.log('colliding')
+                moving=false
+                break
+            }
+        }
+        if(moving){
+            movables.forEach(movable => {
+                movable.position.y += 3
+            })
+        }
     } else if(keys.a.pressed && lastKey === 'a'){ 
         movables.forEach(movable => {
             movable.position.x +=3 
