@@ -26,7 +26,7 @@ class Boundary{
 
 const boundaries = []
 const offset={
-    x: -785,
+    x: -735,
     y: -650
 }
 
@@ -142,7 +142,6 @@ function animate(){
                     y: boundary.position.y + 3
                 }}
              })){
-                console.log('colliding')
                 moving=false
                 break
             }
@@ -153,17 +152,62 @@ function animate(){
             })
         }
     } else if(keys.a.pressed && lastKey === 'a'){ 
-        movables.forEach(movable => {
-            movable.position.x +=3 
-        })
+        for( let i = 0; i < boundaries.length; i++){
+            const boundary =  boundaries[i]
+            if(rectangularCollisions({
+                r1: player, 
+                r2: {...boundary, position: {
+                    x: boundary.position.x + 3,
+                    y: boundary.position.y
+                }}
+             })){
+                moving=false
+                break
+            }
+        }
+        if(moving){
+            movables.forEach(movable => {
+                movable.position.x += 3
+            })
+        }
     } else if(keys.s.pressed && lastKey === 's'){ 
-        movables.forEach(movable => {
-            movable.position.y -=3 
-        })
+        for( let i = 0; i < boundaries.length; i++){
+            const boundary =  boundaries[i]
+            if(rectangularCollisions({
+                r1: player, 
+                r2: {...boundary, position: {
+                    x: boundary.position.x,
+                    y: boundary.position.y - 3
+                }}
+             })){
+                moving=false
+                break
+            }
+        }
+        if(moving){
+            movables.forEach(movable => {
+                movable.position.y -= 3
+            })
+        }
     } else if(keys.d.pressed && lastKey === 'd'){ 
-        movables.forEach(movable => {
-            movable.position.x -=3 
-        })
+        for( let i = 0; i < boundaries.length; i++){
+            const boundary =  boundaries[i]
+            if(rectangularCollisions({
+                r1: player, 
+                r2: {...boundary, position: {
+                    x: boundary.position.x - 3,
+                    y: boundary.position.y
+                }}
+             })){
+                moving=false
+                break
+            }
+        }
+        if(moving){
+            movables.forEach(movable => {
+                movable.position.x -= 3
+            })
+        }
     }
 }
 animate()
