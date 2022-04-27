@@ -52,6 +52,8 @@ function animateBattle(){
 //animate()
 animateBattle()
 
+const queue = []
+
 
 document.querySelectorAll('button').forEach((button) => {
     button.addEventListener('click', (e) => {
@@ -61,10 +63,24 @@ document.querySelectorAll('button').forEach((button) => {
             recipient: draggle,
             renderedSprites
         })
+
+        queue.push(() => {
+            draggle.attack({ 
+                attack: attacks.Tackle, 
+                recipient: emby,
+                renderedSprites
+            })
+        })
     })
 })
 
 
 document.querySelector('#dialogueBox').addEventListener('click', (e) => {
-    e.currentTarget.style.display='none'
+    if(queue.length > 0){
+        queue[0]()
+        queue.shift()
+    }else{
+        e.currentTarget.style.display='none'
+    }
+
 })
