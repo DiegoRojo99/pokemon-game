@@ -19,8 +19,10 @@ emby.attacks.forEach(attack => {
     document.querySelector('#attacksBox').append(button)
 })
 
+let battleAnimationId
+
 function animateBattle(){
-    window.requestAnimationFrame(animateBattle)
+    battleAnimationId = window.requestAnimationFrame(animateBattle)
     battleBackground.draw()
     draggle.draw()
     emby.draw()
@@ -49,7 +51,20 @@ document.querySelectorAll('button').forEach((button) => {
             queue.push(() => {
                 draggle.faint()
             })
-            return
+            queue.push(() => {
+                //Fade back to black
+                gsap.to('#overlappingDiv',{
+                    opacity: 1,
+                    onComplete: () => {
+                        cancelAnimationFrame(battleAnimationId)
+                        animate(),
+                        document.querySelector('#healthBars').style.display='none'
+                        gsap.to('#overlappingDiv',{
+                            opacity: 0
+                        })
+                    }
+                })
+            })
         }
 
         //Enemy attacks
@@ -67,7 +82,6 @@ document.querySelectorAll('button').forEach((button) => {
             queue.push(() => {
                 emby.faint()
             })
-            return
         }
     })
     button.addEventListener('mouseenter', (e) => {
