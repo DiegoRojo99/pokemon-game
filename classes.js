@@ -71,6 +71,7 @@ class Monster extends Sprite{
         rotation = 0,
         isEnemy=false, 
         name,
+        type,
         attacks
     }){
         super({
@@ -84,6 +85,7 @@ class Monster extends Sprite{
         this.health = 100
         this.isEnemy=isEnemy
         this.name=name
+        this.type=type
         this.attacks=attacks
     }
 
@@ -107,8 +109,18 @@ class Monster extends Sprite{
             healthBar = '#playerHealthBar'
             rotation=-2.2
         }
+            
+        recipient.health -= (attack.damage * checkEfectiveness(attack.type, recipient.type))
         
-        recipient.health -=  attack.damage
+        if(checkEfectiveness(attack.type, recipient.type)===2){
+            queue.push(() => {
+                document.querySelector('#dialogueBox').innerHTML = 'It was very effective'
+            })            
+        }else if(checkEfectiveness(attack.type, recipient.type)===0.5){
+            queue.push(() => {
+                document.querySelector('#dialogueBox').innerHTML = 'It was NOT very effective'
+            })            
+        }
 
         switch(attack.name){
             case 'PowerWhip':

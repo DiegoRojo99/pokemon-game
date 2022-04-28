@@ -12,6 +12,7 @@ const monsters = {
         },
         animate: true,
         name: 'Emby',
+        type: 'Fire',
         attacks: [attacks.Tackle, attacks.Fireball]
     },
     Draggle:{
@@ -27,6 +28,7 @@ const monsters = {
         animate: true,
         isEnemy: true,
         name: 'Draggle',
+        type: 'Plant',
         attacks: [attacks.Tackle, attacks.PowerWhip]
     }
 }

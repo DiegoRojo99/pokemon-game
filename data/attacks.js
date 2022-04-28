@@ -17,7 +17,7 @@ const attacks = {
         name: 'PowerWhip',
         shown: 'Power Whip',
         damage: 20,
-        type: 'Water',
+        type: 'Plant',
         color: 'blue'
     },
     Fireball: {

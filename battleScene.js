@@ -138,3 +138,34 @@ document.querySelector('#dialogueBox').addEventListener('click', (e) => {
     }
 
 })
+
+function checkEfectiveness(attackType, recipientType){
+
+    switch(recipientType){
+        case 'Fire':
+            switch(attackType){
+                case 'Water':
+                    return 2
+                case 'Rock':
+                    return 2
+                case 'Plant':
+                    return 0.5
+                default:
+                    return 1
+            }
+        case 'Plant':
+            switch(attackType){
+                case 'Fire':
+                    return 2
+                case 'Water':
+                    return 1/2
+                default:
+                    return 1
+            }
+        default:
+            return 1
+    }
+
+    return 1
+
+}
