@@ -150,6 +150,20 @@ function checkEfectiveness(attackType, recipientType){
                     return 2
                 case 'Plant':
                     return 0.5
+                case 'Fire':
+                    return 0.5
+                case 'Ice':
+                    return 0.5
+                case 'Rock':
+                    return 2
+                case 'Fairy':
+                    return 0.5
+                case 'Steel':
+                    return 0.5
+                case 'Bug':
+                    return 0.5
+                case 'Ground':
+                    return 2
                 default:
                     return 1
             }
@@ -158,7 +172,21 @@ function checkEfectiveness(attackType, recipientType){
                 case 'Fire':
                     return 2
                 case 'Water':
-                    return 1/2
+                    return 0.5
+                case 'Plant':
+                    return 0.5
+                case 'Electric':
+                    return 0.5
+                case 'Flying':
+                    return 2
+                case 'Ice':
+                    return 2
+                case 'Bug':
+                    return 2
+                case 'Poison':
+                    return 2
+                case 'Ground':
+                    return 0.5
                 default:
                     return 1
             }
