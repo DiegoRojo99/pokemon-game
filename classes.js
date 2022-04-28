@@ -111,6 +111,54 @@ class Monster extends Sprite{
         recipient.health -=  attack.damage
 
         switch(attack.name){
+            case 'PowerWhip':
+                const leafImage=new Image()
+                leafImage.src="./img/projectiles/plantSpike.png"
+                const leaf = new Sprite ({
+                    position: {
+                        x: this.position.x,
+                        y: this.position.y
+                    },
+                    rotation: 5.6,
+                    image: leafImage,
+                    frames: {
+                        max: 4,
+                        hold: 10
+                    },
+                    animate: true
+                })
+                renderedSprites.splice(1, 0, leaf)
+
+                if(this.isEnemy){
+                    leaf.rotation=-4
+                }
+
+                gsap.to(leaf.position, {
+                    x: recipient.position.x,
+                    y: recipient.position.y,
+                    onComplete: () => {
+                        gsap.to(healthBar, {
+                            width: recipient.health + '%'
+                        })
+
+                        gsap.to(recipient.position, {
+                            x: recipient.position.x + 10,
+                            yoyo: true,
+                            repeat: 5,
+                            duration: 0.08  
+                        })
+
+                        gsap.to(recipient, {
+                            opacity: 0,
+                            repeat: 5,
+                            yoyo: true,
+                            duration: 0.08
+                        })
+                        
+                        renderedSprites.splice(1, 1)
+                    }
+                })
+                break
             case 'RockWrecker':
                 const rockImage=new Image()
                 rockImage.src="./img/projectiles/rock.png"
