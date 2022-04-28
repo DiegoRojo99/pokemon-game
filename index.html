@@ -1,84 +1,59 @@
-<head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <style>
-        *{
-            font-family: 'Press Start 2P', cursive;
-        }
-        body{
-            background-color: black;
-        }
-        h1{
-            margin: 0;
-            font-size: 16px;
-        }
-        button{
-            border: 0;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover{
-            background-color: #ddd;
-        }
-    </style>
-</head>
-<div style="display: inline-block; position: relative;">
-    <div 
-    id="overlappingDiv"
-    style="background-color: black; position: absolute; top:0; right: 0; 
-    bottom: 0; left: 0; opacity: 0; pointer-events: none; z-index: 10;"></div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    </head>
+    <body>
+    <div style="display: inline-block; position: relative;">
+        <div id="overlappingDiv"></div>
 
 
-    <canvas></canvas>
-    <div id="healthBars" style="display: none;"> 
-        <!-- DRAGGLE Health Bar -->
-        <div style="padding: 12px; background-color: white; width: 250px; position: absolute; top: 50px; left: 50px; border: 4px solid black;">
-            <h1>Draggle</h1>
-            <div style="position: relative;">
-                <div style="height: 5px; background-color: #ddd; margin-top: 10px;"></div>
-                <div id="enemyHealthBar" style="height: 5px; background-color: green; position: absolute; top:0; left: 0; right: 0;"></div>
+        <canvas></canvas>
+        <div id="healthBars"> 
+            <!-- DRAGGLE Health Bar -->
+            <div id="enemyBox">
+                <h1>Draggle</h1>
+                <div style="position: relative;">
+                    <div class="barBackground"></div>
+                    <div id="enemyHealthBar"></div>
+                </div>
             </div>
-        </div>
-        <!-- EMBY Health Bar -->
-        <div style="padding: 12px; background-color: white; width: 250px; position: absolute; top: 330px; right: 50px; border: 4px solid black;">
-            <h1>Emby</h1>
-            <div style="position: relative;">
-                <div style="height: 5px; background-color: #ddd; margin-top: 10px;"></div>
-                <div id="playerHealthBar" style="height: 5px; background-color: green; position: absolute; top:0; left: 0; right: 0;"></div>
+            <!-- EMBY Health Bar -->
+            <div id="playerBox">
+                <h1>Emby</h1>
+                <div style="position: relative;">
+                    <div class="barBackground"></div>
+                    <div id="playerHealthBar"></div>
+                </div>
             </div>
-        </div>
 
-        <div style="
-        background-color: white;  
-        height: 140px;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        border-top: 4px solid black;
-        display: flex;">
-            <div id="dialogueBox" style="cursor: pointer; position: absolute; top: 0; left: 0; bottom: 0; right: 0; background-color: white; padding: 12px; display: none;"></div>
-            <div id="attacksBox" style="width: 66.66%; display: grid; grid-template-columns: repeat(2, 1fr);">
-            
-            </div>
-            <div style="display:flex; align-items:center; justify-content:center; width: 33.33%; border-left: 4px solid black">
-                <h1 id="attackType" style="font-size: 16px;">Attack Type</h1>
+            <div id="playerActions">
+                <div id="dialogueBox"></div>
+                <div id="attacksBox">
+                
+                </div>
+                <div id="attackTypeBox">
+                    <h1 id="attackType">Attack Type</h1>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<script 
-    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js" 
-    integrity="sha512-6zTDRWNxo8vI6JZYDCwhrJpg5icK3P4HNnW3czsO5Scb3lAoPDam+/wF3eog4hxcl0h44d0XlIcFkuoSaWHQ2g==" 
-    crossorigin="anonymous" 
-    referrerpolicy="no-referrer">
-</script>
-<script src="./data/battleZones.js"></script>
-<script src="./data/collisions.js"></script>
-<script src="./data/attacks.js"></script>
-<script src="./data/monsters.js"></script>
-<script src="classes.js"></script>
-<script src="index.js"></script>
-<script src="battleScene.js"></script>
+    <script 
+        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js" 
+        integrity="sha512-6zTDRWNxo8vI6JZYDCwhrJpg5icK3P4HNnW3czsO5Scb3lAoPDam+/wF3eog4hxcl0h44d0XlIcFkuoSaWHQ2g==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer">
+    </script>
+    <script src="./data/battleZones.js"></script>
+    <script src="./data/collisions.js"></script>
+    <script src="./data/attacks.js"></script>
+    <script src="./data/monsters.js"></script>
+    <script src="classes.js"></script>
+    <script src="index.js"></script>
+    <script src="battleScene.js"></script>
+    </body>
+</html>
