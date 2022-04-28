@@ -135,6 +135,7 @@ const battle={
 }
 
 function animate(){
+    
     const animationId = window.requestAnimationFrame(animate)
     background.draw()
     
