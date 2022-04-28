@@ -36,7 +36,6 @@ animateBattle()
 
 const queue = []
 
-
 document.querySelectorAll('button').forEach((button) => {
     button.addEventListener('click', (e) => {
         const selectedAttack= attacks[e.currentTarget.innerHTML]
@@ -46,9 +45,11 @@ document.querySelectorAll('button').forEach((button) => {
             renderedSprites
         })
 
+        const randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
+
         queue.push(() => {
             draggle.attack({ 
-                attack: attacks.Tackle, 
+                attack: randomAttack, 
                 recipient: emby,
                 renderedSprites
             })
