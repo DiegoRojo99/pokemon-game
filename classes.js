@@ -99,7 +99,7 @@ class Monster extends Sprite{
 
     attack({attack, recipient, renderedSprites}){
         document.querySelector('#dialogueBox').style.display="block"
-        document.querySelector('#dialogueBox').innerHTML = this.name + ' used ' +attack.name
+        document.querySelector('#dialogueBox').innerHTML = this.name + ' used ' +attack.shown
         
         let healthBar = '#enemyHealthBar'
         let rotation=1
