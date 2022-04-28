@@ -12,7 +12,7 @@ const monsters = {
         },
         animate: true,
         name: 'Emby',
-        attacks: [attacks.Tackle, attacks.Fireball]
+        attacks: [attacks.Tackle, attacks.Fireball, attacks.RockWrecker]
     },
     Draggle:{
         position: {

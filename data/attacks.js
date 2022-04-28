@@ -10,5 +10,11 @@ const attacks = {
         damage: 25,
         type: 'Fire',
         color: 'red'
+    },
+    RockWrecker: {
+        name: 'RockWrecker',
+        damage: 30,
+        type: 'Rock',
+        color: 'brown'
     }
 }

@@ -111,9 +111,53 @@ class Monster extends Sprite{
         recipient.health -=  attack.damage
 
         switch(attack.name){
+            case 'RockWrecker':
+                const rockImage=new Image()
+                rockImage.src="./img/projectiles/rock.png"
+                const rock = new Sprite ({
+                    position: {
+                        x: this.position.x,
+                        y: this.position.y
+                    },
+                    image: rockImage,
+                    frames: {
+                        max: 4,
+                        hold: 10
+                    },
+                    animate: true,
+                    rotation: rotation
+                })
+                renderedSprites.splice(1, 0, rock)
+
+                gsap.to(rock.position, {
+                    x: recipient.position.x,
+                    y: recipient.position.y,
+                    onComplete: () => {
+                        gsap.to(healthBar, {
+                            width: recipient.health + '%'
+                        })
+
+                        gsap.to(recipient.position, {
+                            x: recipient.position.x + 10,
+                            yoyo: true,
+                            repeat: 5,
+                            duration: 0.08  
+                        })
+
+                        gsap.to(recipient, {
+                            opacity: 0,
+                            repeat: 5,
+                            yoyo: true,
+                            duration: 0.08
+                        })
+                        
+                        renderedSprites.splice(1, 1)
+                    }
+                })
+                break
             case 'Fireball':
                 const fireballImage=new Image()
-                fireballImage.src="./img/fireball.png"
+                fireballImage.src="./img/projectiles/fireball.png"
                 const fireball = new Sprite ({
                     position: {
                         x: this.position.x,
