@@ -15,7 +15,7 @@ const monsters = {
         animate: true,
         name: 'Skull Crasher',
         type: 'Ghost',
-        attacks: [attacks.Tackle, attacks.RockWrecker]
+        attacks: [attacks.Tackle, attacks.Tackle]
     },
     Emby:{
         position: {
@@ -47,7 +47,6 @@ const monsters = {
             max: 4, hold: 30
         },
         animate: true,
-        isEnemy: true,
         name: 'Draggle',
         type: 'Plant',
         attacks: [attacks.Tackle, attacks.PowerWhip]

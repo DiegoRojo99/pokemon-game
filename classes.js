@@ -155,7 +155,7 @@ class Monster extends Sprite{
             healthBar = '#playerHealthBar'
             rotation=-2.2
         }
-            
+         
         recipient.health -= (attack.damage * checkEfectiveness(attack.type, recipient.type))
         
         if(checkEfectiveness(attack.type, recipient.type)===2){

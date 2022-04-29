@@ -24,7 +24,12 @@ function initBattle(){
     skull = new Monster(monsters.Skull)
     draggle = new Monster(monsters.Draggle)
     emby = new Monster(monsters.Emby)
-    renderedSprites = [draggle, emby]
+    enemy= skull
+    enemy.isEnemy = true
+
+    document.querySelector('#enemyName').innerHTML=enemy.name
+
+    renderedSprites = [enemy, emby]
     queue = []
     
     emby.attacks.forEach(attack => {
@@ -40,13 +45,13 @@ function initBattle(){
             const selectedAttack= attacks[attackShownName]
             emby.attack({ 
                 attack: selectedAttack, 
-                recipient: draggle,
+                recipient: enemy,
                 renderedSprites
             })
 
-            if(draggle.health <= 0){
+            if(enemy.health <= 0){
                 queue.push(() => {
-                    draggle.faint()
+                    enemy.faint()
                 })
                 queue.push(() => {
                     //Fade back to black
@@ -67,10 +72,10 @@ function initBattle(){
             }
 
             //Enemy attacks
-            const randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
+            const randomAttack = enemy.attacks[Math.floor(Math.random() * enemy.attacks.length)]
 
             queue.push(() => {
-                draggle.attack({ 
+                enemy.attack({ 
                     attack: randomAttack, 
                     recipient: emby,
                     renderedSprites
