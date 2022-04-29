@@ -1,5 +1,22 @@
 
 const monsters = {
+    Skull:{
+        position: {
+            x: 800,
+            y: 100
+        }, image: {
+            src: './img/monsters/skullFront.png'
+        },backImage: {
+            src: './img/monsters/skullFront.png'
+        },
+        frames:{
+            max: 4, hold: 30
+        },
+        animate: true,
+        name: 'Skull Crasher',
+        type: 'Ghost',
+        attacks: [attacks.Tackle, attacks.RockWrecker]
+    },
     Emby:{
         position: {
             x: 280,

@@ -21,6 +21,7 @@ function initBattle(){
     document.querySelector('#playerHealthBar').style.width = '100%'
     document.querySelector('#attacksBox').replaceChildren()
 
+    skull = new Monster(monsters.Skull)
     draggle = new Monster(monsters.Draggle)
     emby = new Monster(monsters.Emby)
     renderedSprites = [draggle, emby]
