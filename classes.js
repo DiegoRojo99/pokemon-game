@@ -70,6 +70,7 @@ class Monster extends Sprite{
         animate = false,
         rotation = 0,
         isEnemy=false, 
+        backImage,
         name,
         type,
         attacks
@@ -82,11 +83,51 @@ class Monster extends Sprite{
             animate,
             rotation
         })
+        
+        this.backImage = new Image()
+        this.backImage.src=backImage.src
         this.health = 100
         this.isEnemy=isEnemy
         this.name=name
         this.type=type
         this.attacks=attacks
+    }
+
+    drawBack(){
+        c.save()
+
+        c.translate(this.position.x + this.width / 2, this.position.y + this.height / 2)
+        c.rotate(this.rotation)
+        c.translate(- this.position.x - this.width / 2, - this.position.y - this.height / 2)
+
+        c.globalAlpha = this.opacity
+        c.drawImage(
+            this.backImage, 
+            this.frames.val * this.width,
+            0,
+            this.image.width / this.frames.max,
+            this.image.height,
+            this.position.x,
+            this.position.y,
+            this.image.width / this.frames.max,
+            this.image.height
+        )
+        c.restore()
+
+        if(!this.animate) return
+
+        if(this.frames.max > 1) {
+            this.frames.elapsed++
+        }
+
+        if(this.frames.elapsed % this.frames.hold === 0){
+            if(this.frames.val< this.frames.max - 1){
+                this.frames.val++
+            }else{
+                this.frames.val=0
+            } 
+        }
+
     }
 
     faint(){

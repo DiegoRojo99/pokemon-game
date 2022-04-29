@@ -112,11 +112,18 @@ function initBattle(){
 function animateBattle(){    
     battleAnimationId = window.requestAnimationFrame(animateBattle)
     battleBackground.draw()
-    draggle.draw()
-    emby.draw()
+
 
     renderedSprites.forEach((sprite) => {
-        sprite.draw()
+        if(sprite.isEnemy!==null){
+            if(sprite.isEnemy===true){
+                sprite.drawBack()
+            }else{
+                sprite.draw()
+            }
+        }else{
+            sprite.draw()
+        }
     })
 }
 
