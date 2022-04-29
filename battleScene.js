@@ -24,7 +24,7 @@ function initBattle(){
     skull = new Monster(monsters.Skull)
     draggle = new Monster(monsters.Draggle)
     emby = new Monster(monsters.Emby)
-    enemy= skull
+    enemy= draggle
     enemy.isEnemy = true
 
     document.querySelector('#enemyName').innerHTML=enemy.name
@@ -139,8 +139,8 @@ function getBattle(){
 }
 
 
-animate()
-//getBattle()
+//animate()
+getBattle()
 
 document.querySelector('#dialogueBox').addEventListener('click', (e) => {
     if(queue.length > 0){
