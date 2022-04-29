@@ -1,0 +1,14 @@
+
+Method to use if the image is 4x4 for the first column
+
+c.drawImage(
+            this.image,
+            0,
+            this.frames.val * this.width,
+            this.image.width / this.frames.max,//
+            this.image.height / this.frames.max,//
+            this.position.x,
+            this.position.y,
+            this.image.width,
+            this.image.height
+        )

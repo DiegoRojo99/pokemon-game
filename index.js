@@ -53,23 +53,23 @@ battleZonesMap.forEach((row,i) => {
 })
 
 const backgroundImage = new Image()
-backgroundImage.src='./img/PelletTown.png'
+backgroundImage.src='./img/bg/PelletTown.png'
 
 const playerDownImage = new Image()
-playerDownImage.src='./img/playerDown.png'
+playerDownImage.src='./img/player/playerDown.png'
 
 const playerUpImage = new Image()
-playerUpImage.src='./img/playerUp.png'
+playerUpImage.src='./img/player/playerUp.png'
 
 const playerLeftImage = new Image()
-playerLeftImage.src='./img/playerLEft.png'
+playerLeftImage.src='./img/player/playerLEft.png'
 
 const playerRightImage = new Image()
-playerRightImage.src='./img/playerRight.png'
+playerRightImage.src='./img/player/playerRight.png'
 
 
 const foregroundImage = new Image()
-foregroundImage.src='./img/foregroundObjects.png'
+foregroundImage.src='./img/bg/foregroundObjects.png'
 
 
 const player = new Sprite({
