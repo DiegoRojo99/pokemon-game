@@ -96,6 +96,11 @@ class Monster extends Sprite{
     drawBack(){
         c.save()
 
+        this.backImage.onload = () => {
+            this.width = this.backImage.width / this.frames.max
+            this.height = this.backImage.height
+        }
+
         c.translate(this.position.x + this.width / 2, this.position.y + this.height / 2)
         c.rotate(this.rotation)
         c.translate(- this.position.x - this.width / 2, - this.position.y - this.height / 2)
@@ -105,12 +110,12 @@ class Monster extends Sprite{
             this.backImage, 
             this.frames.val * this.width,
             0,
-            this.image.width / this.frames.max,
-            this.image.height,
+            this.backImage.width / this.frames.max,
+            this.backImage.height,
             this.position.x,
             this.position.y,
-            this.image.width / this.frames.max,
-            this.image.height
+            this.backImage.width / this.frames.max,
+            this.backImage.height
         )
         c.restore()
 
