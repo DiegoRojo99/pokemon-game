@@ -24,7 +24,7 @@ function initBattle(){
     skull = new Monster(monsters.Skull)
     draggle = new Monster(monsters.Draggle)
     emby = new Monster(monsters.Emby)
-    enemy= draggle
+    enemy= skull
     enemy.isEnemy = true
 
     document.querySelector('#enemyName').innerHTML=enemy.name
