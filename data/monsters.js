@@ -5,7 +5,7 @@ const monsters = {
             x: 800,
             y: 100
         }, image: {
-            src: './img/monsters/skullFront.png'
+            src: './img/monsters/skullBack.png'
         },backImage: {
             src: './img/monsters/skullFront.png'
         },
@@ -22,9 +22,9 @@ const monsters = {
             x: 280,
             y: 325
         }, image: {
-            src: './img/monsters/embySprite.png'
+            src: './img/monsters/embyBack.png'
         },backImage: {
-            src: './img/monsters/embySprite.png'
+            src: './img/monsters/embyFront.png'
         },
         frames:{
             max: 4, hold: 30
