@@ -356,7 +356,20 @@ function animate(){
     }
 }
 
+// Inventory displays
+function getInventory(){
+    document.querySelector('#inventory-menu').style.display='block'
+}
+function closeInventory(){
+    document.querySelector('#inventory-menu').style.display='none'
+}
 
+document.querySelector('#inventory-briefcase').addEventListener('click', (e) => {
+    getInventory()
+})
+document.querySelector('#inventory-menu').addEventListener('click', (e) => {
+    closeInventory()
+})
 
 lastKey=''
 window.addEventListener('keydown',(e) => {
