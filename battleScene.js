@@ -23,35 +23,29 @@ function initBattle(){
     document.querySelector('#enemyHealthBar').style.width = '100%'
     document.querySelector('#playerHealthBar').style.width = '100%'
     document.querySelector('#attacksBox').replaceChildren()
-
-    //Monsters initialized here
-    skull = new Monster(monsters.Skull)
-    okto = new Monster(monsters.Okto)
-    draggle = new Monster(monsters.Draggle)
-    emby = new Monster(monsters.Emby)
         
     //Enemy is chosen here
     let randomEnemyNumber = Math.floor(Math.random() * 4)
     switch(randomEnemyNumber){
         case 0:
-            enemy = skull
+            enemy = new Monster(monsters.Skull)
             break
         case 1:
-            enemy = okto
+            enemy = new Monster(monsters.Okto)
             break
         case 2:
-            enemy = draggle
+            enemy = new Monster(monsters.Draggle)
             break
         case 3: 
-            enemy = emby
+            enemy = new Monster(monsters.Emby)
             break
         default:
-            enemy = draggle
+            enemy = new Monster(monsters.Draggle)
             break
     }
 
     //Player is assigned here
-    playerMonster = okto
+    playerMonster = new Monster(monsters.Okto)
 
     document.querySelector('#enemyName').innerHTML=enemy.name
     document.querySelector('#playerName').innerHTML=playerMonster.name
