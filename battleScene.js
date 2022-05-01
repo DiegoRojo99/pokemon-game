@@ -27,7 +27,25 @@ function initBattle(){
     okto = new Monster(monsters.Okto)
     draggle = new Monster(monsters.Draggle)
     emby = new Monster(monsters.Emby)
-    enemy= draggle
+        
+    let randomEnemyNumber = Math.floor(Math.random() * 4)
+    switch(randomEnemyNumber){
+        case 0:
+            enemy = skull
+            break
+        case 1:
+            enemy = okto
+            break
+        case 2:
+            enemy = draggle
+            break
+        case 3: 
+            enemy = emby
+            break
+        default:
+            enemy = draggle
+            break
+    }
     enemy.isEnemy = true
 
     document.querySelector('#enemyName').innerHTML=enemy.name
