@@ -114,3 +114,26 @@ button:hover{
     right: 0; 
     bottom: 0;
 }
+#inventory-menu{
+    position:absolute; 
+    top: 0;
+    left: 0; 
+    display: none; 
+    width: 1024px; 
+    height: 576px; 
+    background-color: beige;
+}
+#items-menu{
+    float: left;
+    margin: 40px;
+    width: 500px; 
+    height: 496px;
+    background-color: blue;
+}
+#monsters-menu{
+    float: left;
+    margin: 40px;
+    width: 364px; 
+    height: 496px;
+    background-color: red;
+}
