@@ -22,9 +22,10 @@ function initBattle(){
     document.querySelector('#attacksBox').replaceChildren()
 
     skull = new Monster(monsters.Skull)
+    okto = new Monster(monsters.Okto)
     draggle = new Monster(monsters.Draggle)
     emby = new Monster(monsters.Emby)
-    enemy= skull
+    enemy= okto
     enemy.isEnemy = true
 
     document.querySelector('#enemyName').innerHTML=enemy.name

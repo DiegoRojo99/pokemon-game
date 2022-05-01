@@ -261,6 +261,50 @@ class Monster extends Sprite{
                     }
                 })
                 break
+            case 'WaterStorm':
+                const waterImage=new Image()
+                waterImage.src="./img/projectiles/energyBall.png"
+                const water = new Sprite ({
+                    position: {
+                        x: this.position.x,
+                        y: this.position.y
+                    },
+                    image: waterImage,
+                    frames: {
+                        max: 4,
+                        hold: 10
+                    },
+                    animate: true,
+                    rotation: rotation
+                })
+                renderedSprites.splice(1, 0, water)
+
+                gsap.to(water.position, {
+                    x: recipient.position.x,
+                    y: recipient.position.y,
+                    onComplete: () => {
+                        gsap.to(healthBar, {
+                            width: recipient.health + '%'
+                        })
+
+                        gsap.to(recipient.position, {
+                            x: recipient.position.x + 10,
+                            yoyo: true,
+                            repeat: 5,
+                            duration: 0.08  
+                        })
+
+                        gsap.to(recipient, {
+                            opacity: 0,
+                            repeat: 5,
+                            yoyo: true,
+                            duration: 0.08
+                        })
+                        
+                        renderedSprites.splice(1, 1)
+                    }
+                })
+                break
             case 'Fireball':
                 const fireballImage=new Image()
                 fireballImage.src="./img/projectiles/fireball.png"

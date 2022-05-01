@@ -6,8 +6,8 @@ const attacks = {
         type: 'Normal',
         color: 'black'
     },
-    Waterstorm: {
-        name: 'Waterstorm',
+    WaterStorm: {
+        name: 'WaterStorm',
         shown: 'Water Storm',
         damage: 20,
         type: 'Water',

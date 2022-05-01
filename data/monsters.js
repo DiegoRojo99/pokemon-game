@@ -1,5 +1,24 @@
 
 const monsters = {
+    
+    Okto:{
+        position: {
+            x: 800,
+            y: 100
+        }, image: {
+            src: './img/monsters/oktoBack.png'
+        },backImage: {
+            src: './img/monsters/oktoFront.png'
+        },
+        frames:{
+            max: 4, hold: 30
+        },
+        animate: true,
+        name: 'Okto',
+        type: 'Water',
+        isEnemy: true,
+        attacks: [attacks.Tackle, attacks.WaterStorm]
+    },
     Skull:{
         position: {
             x: 800,
