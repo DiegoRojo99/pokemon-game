@@ -12,6 +12,7 @@ let draggle
 let emby
 let okto
 let enemy
+let playerMonster
 let renderedSprites
 let battleAnimationId
 let queue
@@ -23,11 +24,13 @@ function initBattle(){
     document.querySelector('#playerHealthBar').style.width = '100%'
     document.querySelector('#attacksBox').replaceChildren()
 
+    //Monsters initialized here
     skull = new Monster(monsters.Skull)
     okto = new Monster(monsters.Okto)
     draggle = new Monster(monsters.Draggle)
     emby = new Monster(monsters.Emby)
         
+    //Enemy is chosen here
     let randomEnemyNumber = Math.floor(Math.random() * 4)
     switch(randomEnemyNumber){
         case 0:
@@ -48,12 +51,16 @@ function initBattle(){
     }
     enemy.isEnemy = true
 
-    document.querySelector('#enemyName').innerHTML=enemy.name
+    //Player is assigned here
+    playerMonster = emby
 
-    renderedSprites = [enemy, emby]
+    document.querySelector('#enemyName').innerHTML=enemy.name
+    document.querySelector('#playerName').innerHTML=playerMonster.name
+
+    renderedSprites = [enemy, playerMonster]
     queue = []
     
-    emby.attacks.forEach(attack => {
+    playerMonster.attacks.forEach(attack => {
         const button = document.createElement('button')
         button.innerHTML = attack.shown
         document.querySelector('#attacksBox').append(button)
@@ -64,7 +71,7 @@ function initBattle(){
             let attackShownName=e.currentTarget.innerHTML
             attackShownName=attackShownName.replace(" ","")
             const selectedAttack= attacks[attackShownName]
-            emby.attack({ 
+            playerMonster.attack({ 
                 attack: selectedAttack, 
                 recipient: enemy,
                 renderedSprites
@@ -98,13 +105,13 @@ function initBattle(){
             queue.push(() => {
                 enemy.attack({ 
                     attack: randomAttack, 
-                    recipient: emby,
+                    recipient: playerMonster,
                     renderedSprites
                 })
 
-                if(emby.health <= 0){
+                if(playerMonster.health <= 0){
                     queue.push(() => {
-                        emby.faint()
+                        playerMonster.faint()
                     })
                     queue.push(() => {
                         //Fade back to black
