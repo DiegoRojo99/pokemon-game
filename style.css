@@ -137,3 +137,8 @@ button:hover{
     height: 496px;
     background-color: red;
 }
+.monster-in-menu{
+    margin: 11px;
+    height: 70px;
+    background-color: aquamarine;
+}
