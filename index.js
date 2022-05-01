@@ -78,7 +78,7 @@ const monsterLeftImage = new Image()
 monsterLeftImage.src='./img/monsters/walking/oktoLeft.png'
 
 const monsterRightImage = new Image()
-monsterRightImage.src='./img/monsters/walking/oktoLeft.png'
+monsterRightImage.src='./img/monsters/walking/oktoRight.png'
 
 //Foreground
 const foregroundImage = new Image()
