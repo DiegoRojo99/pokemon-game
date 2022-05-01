@@ -62,12 +62,25 @@ const playerUpImage = new Image()
 playerUpImage.src='./img/player/playerUp.png'
 
 const playerLeftImage = new Image()
-playerLeftImage.src='./img/player/playerLEft.png'
+playerLeftImage.src='./img/player/playerLeft.png'
 
 const playerRightImage = new Image()
 playerRightImage.src='./img/player/playerRight.png'
 
+//Monster Images
+const monsterDownImage = new Image()
+monsterDownImage.src='./img/monsters/walking/oktoLeft.png'
 
+const monsterUpImage = new Image()
+monsterUpImage.src='./img/monsters/walking/oktoLEft.png'
+
+const monsterLeftImage = new Image()
+monsterLeftImage.src='./img/monsters/walking/oktoLeft.png'
+
+const monsterRightImage = new Image()
+monsterRightImage.src='./img/monsters/walking/oktoLeft.png'
+
+//Foreground
 const foregroundImage = new Image()
 foregroundImage.src='./img/bg/foregroundObjects.png'
 
@@ -89,6 +102,53 @@ const player = new Sprite({
         right: playerRightImage
     }
 })
+
+const monsterSprite = new Sprite({
+    position: {
+        x: canvas.width / 2 - 192 / 4 / 2,
+        y: canvas.height / 2 - 68 / 2
+    },
+    image: monsterDownImage,
+    frames: {
+        max: 4,
+        hold: 10
+    },
+    sprites: {
+        up: monsterUpImage,
+        down: monsterDownImage,
+        left: monsterLeftImage,
+        right: monsterRightImage
+    }
+})
+
+function drawUp(monster){
+    monster.image = monster.sprites.up
+    monster.position={
+        x: player.position.x,
+        y: player.position.y + (player.height)
+    }
+}
+function drawDown(monster){
+    monster.image = monster.sprites.down
+    monster.position={
+        x: player.position.x,
+        y: player.position.y - (player.height / player.frames.max * 3)
+    }
+}
+function drawLeft(monster){
+    monster.image = monster.sprites.left
+    monster.position={
+        x: player.position.x + (player.width),
+        y: player.position.y + (player.height / player.frames.max)
+    }
+}
+function drawRight(monster){
+    monster.image = monster.sprites.right
+    monster.position={
+        x: player.position.x - (player.width),
+        y: player.position.y + (player.height / player.frames.max)
+    }
+}
 
 const background = new Sprite({
     position: {
@@ -147,6 +207,7 @@ function animate(){
     }))
     
    player.draw()
+   monsterSprite.draw()
    foreground.draw()
 
    
@@ -202,6 +263,7 @@ function animate(){
     if(keys.w.pressed && lastKey === 'w'){ 
         player.animate=true
         player.image = player.sprites.up
+        drawUp(monsterSprite)
         for( let i = 0; i < boundaries.length; i++){
             const boundary =  boundaries[i]
             if(rectangularCollisions({
@@ -223,6 +285,7 @@ function animate(){
     } else if(keys.a.pressed && lastKey === 'a'){ 
         player.animate=true
         player.image = player.sprites.left
+        drawLeft(monsterSprite)
         for( let i = 0; i < boundaries.length; i++){
             const boundary =  boundaries[i]
             if(rectangularCollisions({
@@ -244,6 +307,7 @@ function animate(){
     } else if(keys.s.pressed && lastKey === 's'){
         player.animate=true 
         player.image = player.sprites.down
+        drawDown(monsterSprite)
         for( let i = 0; i < boundaries.length; i++){
             const boundary =  boundaries[i]
             if(rectangularCollisions({
@@ -265,6 +329,7 @@ function animate(){
     } else if(keys.d.pressed && lastKey === 'd'){
         player.animate=true 
         player.image = player.sprites.right
+        drawRight(monsterSprite)
         for( let i = 0; i < boundaries.length; i++){
             const boundary =  boundaries[i]
             if(rectangularCollisions({
