@@ -49,13 +49,25 @@ function initBattle(){
             enemy = draggle
             break
     }
-    enemy.isEnemy = true
 
     //Player is assigned here
-    playerMonster = emby
+    playerMonster = okto
 
     document.querySelector('#enemyName').innerHTML=enemy.name
     document.querySelector('#playerName').innerHTML=playerMonster.name
+
+    enemy.position = {
+        x: 800,
+        y: 100
+    }
+    playerMonster.position = {
+        x: 280,
+        y: 325
+    }
+    
+    enemy.isEnemy = true
+    playerMonster.isEnemy = false
+
 
     renderedSprites = [enemy, playerMonster]
     queue = []

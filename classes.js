@@ -390,6 +390,7 @@ class Monster extends Sprite{
                 break
         }
         
+        console.log(recipient.name + ' has ' +recipient.health+' healthleft')
     }
 }
 
