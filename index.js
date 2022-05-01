@@ -69,10 +69,10 @@ playerRightImage.src='./img/player/playerRight.png'
 
 //Monster Images
 const monsterDownImage = new Image()
-monsterDownImage.src='./img/monsters/walking/oktoLeft.png'
+monsterDownImage.src='./img/monsters/walking/oktoFront.png'
 
 const monsterUpImage = new Image()
-monsterUpImage.src='./img/monsters/walking/oktoLEft.png'
+monsterUpImage.src='./img/monsters/walking/oktoBack.png'
 
 const monsterLeftImage = new Image()
 monsterLeftImage.src='./img/monsters/walking/oktoLeft.png'
@@ -194,6 +194,8 @@ function rectangularCollisions({ r1,r2}){
 const battle={
     initiated:false
 }
+
+drawDown(monsterSprite)
 
 function animate(){
     
