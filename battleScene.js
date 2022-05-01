@@ -10,6 +10,8 @@ const battleBackground = new Sprite({
 
 let draggle
 let emby
+let okto
+let enemy
 let renderedSprites
 let battleAnimationId
 let queue
@@ -25,7 +27,7 @@ function initBattle(){
     okto = new Monster(monsters.Okto)
     draggle = new Monster(monsters.Draggle)
     emby = new Monster(monsters.Emby)
-    enemy= okto
+    enemy= draggle
     enemy.isEnemy = true
 
     document.querySelector('#enemyName').innerHTML=enemy.name
@@ -140,8 +142,8 @@ function getBattle(){
 }
 
 
-//animate()
-getBattle()
+animate()
+//getBattle()
 
 document.querySelector('#dialogueBox').addEventListener('click', (e) => {
     if(queue.length > 0){
