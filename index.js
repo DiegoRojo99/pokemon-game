@@ -111,8 +111,9 @@ const monsterSprite = new Sprite({
     image: monsterDownImage,
     frames: {
         max: 4,
-        hold: 10
+        hold: 30
     },
+    animate: true,
     sprites: {
         up: monsterUpImage,
         down: monsterDownImage,
