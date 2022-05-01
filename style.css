@@ -107,3 +107,10 @@ button:hover{
     border-top: 4px solid black;
     display: flex;
 }
+#inventory-briefcase{
+    width: 80px; 
+    position: absolute; 
+    top:0; left:1024; 
+    right: 0; 
+    bottom: 0;
+}

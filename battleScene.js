@@ -20,6 +20,7 @@ let queue
 function initBattle(){
     document.querySelector('#healthBars').style.display = 'block'
     document.querySelector('#dialogueBox').style.display = 'none'
+    document.querySelector('#inventory-briefcase').style.display = 'none'
     document.querySelector('#enemyHealthBar').style.width = '100%'
     document.querySelector('#playerHealthBar').style.width = '100%'
     document.querySelector('#attacksBox').replaceChildren()

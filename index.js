@@ -198,6 +198,8 @@ const battle={
 drawDown(monsterSprite)
 
 function animate(){
+
+    document.querySelector('#inventory-briefcase').style.display = 'block'
     
     const animationId = window.requestAnimationFrame(animate)
     background.draw()
