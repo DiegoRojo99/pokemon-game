@@ -181,6 +181,17 @@ function checkEfectiveness(attackType, recipientType){
                 default:
                     return 1
             }
+        case 'Water':
+            switch(attackType){
+                case 'Water':
+                    return 0.5
+                case 'Plant':
+                    return 2
+                case 'Fire':
+                    return 0.5
+                default:
+                    return 1
+            }
         case 'Plant':
             switch(attackType){
                 case 'Fire':
