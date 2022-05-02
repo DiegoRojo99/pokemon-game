@@ -356,6 +356,30 @@ function animate(){
     }
 }
 
+//Change monster
+function changeMonster(numberMonster){
+    switch(numberMonster){
+        case 1:
+            monsterDownImage.src='./img/monsters/walking/oktoFront.png'
+            monsterUpImage.src='./img/monsters/walking/oktoBack.png'
+            monsterLeftImage.src='./img/monsters/walking/oktoLeft.png'
+            monsterRightImage.src='./img/monsters/walking/oktoRight.png'
+            break
+        case 2:
+            monsterUpImage.src='./img/monsters/walking/oktoFront.png'
+            monsterDownImage.src='./img/monsters/walking/oktoBack.png'
+            monsterRightImage.src='./img/monsters/walking/oktoLeft.png'
+            monsterLeftImage.src='./img/monsters/walking/oktoRight.png'
+    }
+    
+}
+document.querySelector('#monster1').addEventListener('click', (e) =>{
+    changeMonster(1)
+})
+document.querySelector('#monster2').addEventListener('click', (e) =>{
+    changeMonster(2)
+})
+
 // Inventory displays
 function getInventory(){
     document.querySelector('#inventory-menu').style.display='block'
