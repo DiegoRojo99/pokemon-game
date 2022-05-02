@@ -357,27 +357,27 @@ function animate(){
 }
 
 //Change monster
-function changeMonster(numberMonster){
-    switch(numberMonster){
-        case 1:
+function changeMonster(nameMonster){
+    switch(nameMonster){
+        case 'Okto':
             monsterDownImage.src='./img/monsters/walking/oktoFront.png'
             monsterUpImage.src='./img/monsters/walking/oktoBack.png'
             monsterLeftImage.src='./img/monsters/walking/oktoLeft.png'
             monsterRightImage.src='./img/monsters/walking/oktoRight.png'
             break
-        case 2:
-            monsterUpImage.src='./img/monsters/walking/oktoFront.png'
-            monsterDownImage.src='./img/monsters/walking/oktoBack.png'
-            monsterRightImage.src='./img/monsters/walking/oktoLeft.png'
-            monsterLeftImage.src='./img/monsters/walking/oktoRight.png'
+        case 'Skull':
+            monsterDownImage.src='./img/monsters/walking/skullFront.png'
+            monsterUpImage.src='./img/monsters/walking/skullBack.png'
+            monsterLeftImage.src='./img/monsters/walking/skullLeft.png'
+            monsterRightImage.src='./img/monsters/walking/skullRight.png'
     }
     
 }
 document.querySelector('#monster1').addEventListener('click', (e) =>{
-    changeMonster(1)
+    changeMonster('Okto')
 })
 document.querySelector('#monster2').addEventListener('click', (e) =>{
-    changeMonster(2)
+    changeMonster('Skull')
 })
 
 // Inventory displays
