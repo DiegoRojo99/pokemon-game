@@ -33,8 +33,8 @@ const monsters = {
         },
         animate: true,
         name: 'Skull Crasher',
-        type: 'Ghost',
-        attacks: [attacks.Tackle, attacks.Tackle]
+        type: 'Fire',
+        attacks: [attacks.Tackle, attacks.RockWrecker, attacks.Fireball]
     },
     Emby:{
         position: {
