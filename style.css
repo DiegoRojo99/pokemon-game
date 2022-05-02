@@ -170,3 +170,25 @@ button:hover{
     border: 5px solid black;
     background-color: white;
 }
+.monster-image{
+    width: 60px;
+    height: 60px;
+    float: left;
+}
+.monster-image img{
+    width: 60px;
+    height: 60px;
+}
+.monster-data{
+    width: 265px;
+    margin: 2.5px;
+    height: 55px;
+    background-color: blueviolet;
+    float: left;
+}
+.life-and-name{
+    margin: 0px 2px;
+}
+.life-and-name p{
+    font-size: 12px;
+}
