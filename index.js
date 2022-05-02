@@ -84,6 +84,7 @@ monsterRightImage.src='./img/monsters/walking/oktoRight.png'
 const foregroundImage = new Image()
 foregroundImage.src='./img/bg/foregroundObjects.png'
 
+let monsterAnimationSelected='Okto'
 
 const player = new Sprite({
     position: {
@@ -364,12 +365,17 @@ function changeMonster(nameMonster){
             monsterUpImage.src='./img/monsters/walking/oktoBack.png'
             monsterLeftImage.src='./img/monsters/walking/oktoLeft.png'
             monsterRightImage.src='./img/monsters/walking/oktoRight.png'
+            monsterAnimationSelected='Okto'
             break
         case 'Skull':
             monsterDownImage.src='./img/monsters/walking/skullFront.png'
             monsterUpImage.src='./img/monsters/walking/skullBack.png'
             monsterLeftImage.src='./img/monsters/walking/skullLeft.png'
             monsterRightImage.src='./img/monsters/walking/skullRight.png'
+            monsterAnimationSelected='Skull'
+            break
+        default:
+            break
     }
     
 }

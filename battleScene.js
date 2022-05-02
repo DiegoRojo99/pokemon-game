@@ -17,6 +17,19 @@ let renderedSprites
 let battleAnimationId
 let queue
 
+function selectMonsterBasedOnAnimation(){
+    switch(monsterAnimationSelected){
+        case 'Okto':
+            playerMonster = new Monster(monsters.Okto)
+            break
+        case 'Skull':
+            playerMonster = new Monster(monsters.Skull)
+            break
+        default:
+            playerMonster = new Monster(monsters.Draggle)
+    }
+}
+
 function initBattle(){
     document.querySelector('#healthBars').style.display = 'block'
     document.querySelector('#dialogueBox').style.display = 'none'
@@ -46,7 +59,7 @@ function initBattle(){
     }
 
     //Player is assigned here
-    playerMonster = new Monster(monsters.Okto)
+    selectMonsterBasedOnAnimation()
 
     document.querySelector('#enemyName').innerHTML=enemy.name
     document.querySelector('#playerName').innerHTML=playerMonster.name
