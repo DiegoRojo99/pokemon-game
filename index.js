@@ -469,15 +469,22 @@ window.addEventListener('keyup',(e) => {
 
 //Apply items function, takes the id of the element
 function applyInventoryItem(elementName){
+    let selectedItem
     switch(elementName){
         case 'item-2':
-            items.BigPotion.inventory-=1
+            selectedItem=items.BigPotion
             break
         case 'item-1':
-            items.SmallPotion.inventory-=1
+            selectedItem=items.SmallPotion
             break
         default:
             break
+    }
+    if(selectedItem.inventory>0){
+        selectedItem.inventory-=1
+    }else{
+        //Todo SET ALERT
+        //document.alert('There is no more '+selectedItem.shown+'s')
     }
     updateItemQuantity(elementName)
 }
