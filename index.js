@@ -251,11 +251,25 @@ function animate(){
                         opacity: 1,
                         duration: 0.4,
                         onComplete(){
+                            let monsterHasHealth=checkSelectedMonsterHealth()
+                            
+                            if(!monsterHasHealth){
+                                console.log('Cancelled a battle')
+                                cancelAnimationFrame(battleAnimationId)
+                                animate(),
+                                document.querySelector('#healthBars').style.display='none'
+                                gsap.to('#overlappingDiv',{
+                                    opacity: 0
+                                })
+                                
+                                battle.initiated = false
+                            }else{
                             getBattle()
                             gsap.to('#overlappingDiv', {
                                 opacity: 0,
                                 duration: 0.4,
-                            })
+                            }) 
+                            }
                         }
                     })
                 }
@@ -516,3 +530,36 @@ document.querySelectorAll('img').forEach((image) => {
         }
     })
 })
+
+//Check health
+function checkSelectedMonsterHealth(){
+    switch(monsterAnimationSelected){
+        case 'Emby':
+            if(monsters.Emby.health>0){
+                return true
+            }else{
+                return false
+            }
+        case 'Draggle':
+            if(monsters.Draggle.health>0){
+                return true
+            }else{
+                return false
+            }
+            break
+        case 'Skull':
+            if(monsters.Skull.health>0){
+                return true
+            }else{
+                return false
+            }
+            break
+        case 'Okto':
+            if(monsters.Okto.health>0){
+                return true
+            }else{
+                return false
+            }
+            break
+    }
+}
