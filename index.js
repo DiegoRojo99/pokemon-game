@@ -497,6 +497,9 @@ function applyInventoryItem(elementName){
     }
     let selectedItem
     switch(elementName){
+        case 'item-3':
+            selectedItem=items.Reviver
+            break
         case 'item-2':
             selectedItem=items.BigPotion
             break
@@ -512,7 +515,14 @@ function applyInventoryItem(elementName){
         //Todo SET ALERT
         //document.alert('There is no more '+selectedItem.shown+'s')
     }
-    if(monsterToApply.health>0 && monsterToApply.health<monsterToApply.maxHealth){
+    if(monsterToApply.health===0&&selectedItem.revives===true){
+        monsterToApply.health+=selectedItem.health
+        if(monsterToApply.health>monsterToApply.maxHealth){
+            monsterToApply.health=monsterToApply.maxHealth
+        }
+        updateItemQuantity(elementName)
+    }
+    if(monsterToApply.health>0 && monsterToApply.health<monsterToApply.maxHealth && selectedItem.revives===false){
         monsterToApply.health+=selectedItem.health
         if(monsterToApply.health>monsterToApply.maxHealth){
             monsterToApply.health=monsterToApply.maxHealth
@@ -531,6 +541,9 @@ function updateItemQuantity(elementNameP){
         case 'item-2':
             itemInfo=items.BigPotion
             break
+        case 'item-3':
+            itemInfo=items.Reviver
+            break
     }
     let itemP=elementNameP+'-p'
     document.getElementById(itemP).innerHTML=itemInfo.shown+' x'+itemInfo.inventory
@@ -540,6 +553,8 @@ document.getElementById('item-1-img').src=items.SmallPotion.image.src
 document.getElementById('item-1-p').innerHTML=items.SmallPotion.shown+' x'+items.SmallPotion.inventory
 document.getElementById('item-2-img').src=items.BigPotion.image.src
 document.getElementById('item-2-p').innerHTML=items.BigPotion.shown+' x'+items.BigPotion.inventory
+document.getElementById('item-3-img').src=items.Reviver.image.src
+document.getElementById('item-3-p').innerHTML=items.Reviver.shown+' x'+items.Reviver.inventory
 
 //Apply Items
 document.querySelectorAll('img').forEach((image) => {
