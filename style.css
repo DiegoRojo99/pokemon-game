@@ -192,3 +192,7 @@ button:hover{
 .life-and-name p{
     font-size: 12px;
 }
+.grid-item img{
+    width: 100%;
+    height: 100%;
+}

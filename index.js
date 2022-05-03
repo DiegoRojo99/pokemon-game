@@ -458,3 +458,6 @@ window.addEventListener('keyup',(e) => {
             break
     }
 })
+
+//The items appear here
+document.getElementById('item-1-img').src=items.SmallPotion.image.src
