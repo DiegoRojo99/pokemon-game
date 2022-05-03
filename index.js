@@ -483,6 +483,18 @@ window.addEventListener('keyup',(e) => {
 
 //Apply items function, takes the id of the element
 function applyInventoryItem(elementName){
+    let monsterToApply
+    switch(monsterAnimationSelected){
+        case 'Draggle':
+            monsterToApply=monsters.Draggle
+        case 'Skull':
+            monsterToApply=monsters.Skull
+        case 'Emby':
+            monsterToApply=monsters.Emby
+        case 'Okto':
+            monsterToApply=monsters.Okto
+            break
+    }
     let selectedItem
     switch(elementName){
         case 'item-2':
@@ -500,7 +512,14 @@ function applyInventoryItem(elementName){
         //Todo SET ALERT
         //document.alert('There is no more '+selectedItem.shown+'s')
     }
-    updateItemQuantity(elementName)
+    if(monsterToApply.health>0 && monsterToApply.health<monsterToApply.maxHealth){
+        monsterToApply.health+=selectedItem.health
+        if(monsterToApply.health>monsterToApply.maxHealth){
+            monsterToApply.health=monsterToApply.maxHealth
+        }
+        updateItemQuantity(elementName)
+    }
+    updateMonsterHealth(monsterToApply.name, monsterToApply.health)
 }
 
 function updateItemQuantity(elementNameP){
