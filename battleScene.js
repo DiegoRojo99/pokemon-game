@@ -102,6 +102,8 @@ function initBattle(){
     enemy.health=enemy.maxHealth
     enemy.isEnemy = true
     playerMonster.isEnemy = false
+    
+    document.querySelector('#playerHealthBar').style.width = (playerMonster.health*100/playerMonster.maxHealth)+'%'
 
     renderedSprites = [enemy, playerMonster]
     queue = []
@@ -299,3 +301,11 @@ function checkEfectiveness(attackType, recipientType){
     return 1
 
 }
+
+function updateAllMonsterHPs(){
+    updateMonsterHealth('Okto',monsters.Okto.health)
+    updateMonsterHealth('Skull Crasher',monsters.Skull.health)
+    updateMonsterHealth('Emby',monsters.Emby.health)
+    updateMonsterHealth('Draggle',monsters.Draggle.health)
+}
+updateAllMonsterHPs()

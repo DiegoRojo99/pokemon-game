@@ -199,7 +199,7 @@ class Monster extends Sprite{
                     y: recipient.position.y,
                     onComplete: () => {
                         gsap.to(healthBar, {
-                            width: recipient.health + '%'
+                            width: (recipient.health/recipient.maxHealth*100) + '%'
                         })
 
                         gsap.to(recipient.position, {
@@ -243,7 +243,7 @@ class Monster extends Sprite{
                     y: recipient.position.y,
                     onComplete: () => {
                         gsap.to(healthBar, {
-                            width: recipient.health + '%'
+                            width: (recipient.health/recipient.maxHealth*100) + '%'
                         })
 
                         gsap.to(recipient.position, {
@@ -287,7 +287,7 @@ class Monster extends Sprite{
                     y: recipient.position.y,
                     onComplete: () => {
                         gsap.to(healthBar, {
-                            width: recipient.health + '%'
+                            width: (recipient.health/recipient.maxHealth*100) + '%'
                         })
 
                         gsap.to(recipient.position, {
@@ -331,7 +331,7 @@ class Monster extends Sprite{
                     y: recipient.position.y,
                     onComplete: () => {
                         gsap.to(healthBar, {
-                            width: recipient.health + '%'
+                            width: (recipient.health/recipient.maxHealth*100) + '%'
                         })
 
                         gsap.to(recipient.position, {
@@ -369,7 +369,7 @@ class Monster extends Sprite{
                     duration: 0.1,
                     onComplete: () => {
                         gsap.to(healthBar, {
-                            width: recipient.health + '%'
+                            width: (recipient.health/recipient.maxHealth*100) + '%'
                         })
 
                         gsap.to(recipient.position, {

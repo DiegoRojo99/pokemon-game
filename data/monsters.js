@@ -13,7 +13,7 @@ const monsters = {
         frames:{
             max: 4, hold: 30
         },
-        maxHealth: 100, health: 100,
+        maxHealth: 120, health: 120,
         animate: true,
         name: 'Okto',
         type: 'Water',
