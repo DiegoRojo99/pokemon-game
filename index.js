@@ -505,13 +505,14 @@ function updateItemQuantity(elementNameP){
 //The items appear here
 document.getElementById('item-1-img').src=items.SmallPotion.image.src
 document.getElementById('item-1-p').innerHTML=items.SmallPotion.shown+' x'+items.SmallPotion.inventory
+document.getElementById('item-2-img').src=items.BigPotion.image.src
+document.getElementById('item-2-p').innerHTML=items.BigPotion.shown+' x'+items.BigPotion.inventory
+
+//Apply Items
 document.querySelectorAll('img').forEach((image) => {
-    image.addEventListener('mouseenter', (e) => {
-        if(e.fromElement.className==='grid-item'){
-            console.log(e.fromElement.id)
-            applyInventoryItem(e.fromElement.id)
+    image.addEventListener('click', (e) => {
+        if(e.path[1].className==="grid-item"){
+            applyInventoryItem(e.path[1].id)
         }
     })
 })
-document.getElementById('item-2-img').src=items.BigPotion.image.src
-document.getElementById('item-2-p').innerHTML=items.BigPotion.shown+' x'+items.BigPotion.inventory
