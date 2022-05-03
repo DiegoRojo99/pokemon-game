@@ -111,6 +111,7 @@ function initBattle(){
     playerMonster.attacks.forEach(attack => {
         const button = document.createElement('button')
         button.innerHTML = attack.shown
+        addPlayerAttack(playerMonster, attack)
         document.querySelector('#attacksBox').append(button)
     })
 
@@ -119,50 +120,18 @@ function initBattle(){
             let attackShownName=e.currentTarget.innerHTML
             attackShownName=attackShownName.replace(" ","")
             const selectedAttack= attacks[attackShownName]
-            playerMonster.attack({ 
-                attack: selectedAttack, 
-                recipient: enemy,
-                renderedSprites
-            })
-
-            if(enemy.health <= 0){
-                queue.push(() => {
-                    enemy.faint()
-                })
-                queue.push(() => {
-                    //Fade back to black
-                    gsap.to('#overlappingDiv',{
-                        opacity: 1,
-                        onComplete: () => {
-                            cancelAnimationFrame(battleAnimationId)
-                            animate(),
-                            document.querySelector('#healthBars').style.display='none'
-                            gsap.to('#overlappingDiv',{
-                                opacity: 0
-                            })
-                            
-                            battle.initiated = false
-                        }
-                    })
-                })
-
-                console
-                updateMonsterHealth(playerMonster.name, playerMonster.health)
-            }
-
-            //Enemy attacks
-            const randomAttack = enemy.attacks[Math.floor(Math.random() * enemy.attacks.length)]
-
-            queue.push(() => {
-                enemy.attack({ 
-                    attack: randomAttack, 
-                    recipient: playerMonster,
+            
+            if(attackHasPPLeft(selectedAttack, playerMonster)){
+                    
+                playerMonster.attack({ 
+                    attack: selectedAttack, 
+                    recipient: enemy,
                     renderedSprites
                 })
 
-                if(playerMonster.health <= 0){
+                if(enemy.health <= 0){
                     queue.push(() => {
-                        playerMonster.faint()
+                        enemy.faint()
                     })
                     queue.push(() => {
                         //Fade back to black
@@ -175,14 +144,50 @@ function initBattle(){
                                 gsap.to('#overlappingDiv',{
                                     opacity: 0
                                 })
-
+                                
                                 battle.initiated = false
                             }
                         })
                     })
-                    updateMonsterHealth(playerMonster.name, 0)
+
+                    console
+                    updateMonsterHealth(playerMonster.name, playerMonster.health)
                 }
-            })
+
+                //Enemy attacks
+                const randomAttack = enemy.attacks[Math.floor(Math.random() * enemy.attacks.length)]
+
+                queue.push(() => {
+                    enemy.attack({ 
+                        attack: randomAttack, 
+                        recipient: playerMonster,
+                        renderedSprites
+                    })
+
+                    if(playerMonster.health <= 0){
+                        queue.push(() => {
+                            playerMonster.faint()
+                        })
+                        queue.push(() => {
+                            //Fade back to black
+                            gsap.to('#overlappingDiv',{
+                                opacity: 1,
+                                onComplete: () => {
+                                    cancelAnimationFrame(battleAnimationId)
+                                    animate(),
+                                    document.querySelector('#healthBars').style.display='none'
+                                    gsap.to('#overlappingDiv',{
+                                        opacity: 0
+                                    })
+
+                                    battle.initiated = false
+                                }
+                            })
+                        })
+                        updateMonsterHealth(playerMonster.name, 0)
+                    }
+                })
+            }
         })
             button.addEventListener('mouseenter', (e) => {
                 
@@ -309,3 +314,63 @@ function updateAllMonsterHPs(){
     updateMonsterHealth('Draggle',monsters.Draggle.health)
 }
 updateAllMonsterHPs()
+
+function addPlayerAttack(monster, attack){
+    switch(monster.name){
+        case 'Okto':
+            switch(attack.name){
+                case 'WaterStorm':
+                    if(monsterXattack.OktoAttacks.WaterStorm===undefined){
+                        monsterXattack.OktoAttacks.WaterStorm={
+                            attackName: attack.name,
+                            pp: attack.maxNumberMoves
+                        }
+                    }
+                    break
+                case 'Tackle':
+                    if(monsterXattack.OktoAttacks.Tackle===undefined){
+                        monsterXattack.OktoAttacks.Tackle={
+                            attackName: attack.name,
+                            pp: attack.maxNumberMoves
+                        }
+                    }
+                    break
+            }
+            break
+    }
+}
+
+function attackHasPPLeft(attack, monster){
+    switch(monster.name){
+        case 'Okto':
+            switch(attack.name){
+                case 'WaterStorm':
+                    if(monsterXattack.OktoAttacks.WaterStorm===undefined){
+                        addPlayerAttack(monster,attack)
+                        return true
+                    }else{
+                        if(monsterXattack.OktoAttacks.WaterStorm.pp>0){
+                            return true
+                        }else{
+                            return false
+                        }
+                    }
+                    break
+                case 'Tackle':
+                    if(monsterXattack.OktoAttacks.Tackle===undefined){
+                        addPlayerAttack(monster,attack)
+                        return true
+                    }else{
+                        if(monsterXattack.OktoAttacks.Tackle.pp>0){
+                            return true
+                        }else{
+                            return false
+                        }
+                    }
+                    break
+            }
+            break
+        default:
+            return true
+    }
+}
