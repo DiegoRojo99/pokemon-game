@@ -194,7 +194,12 @@ function initBattle(){
                 let attackShownName=e.currentTarget.innerHTML
                 attackShownName=attackShownName.replace(" ","")
                 const selectedAttack = attacks[attackShownName]
-                document.querySelector('#attackType').innerHTML = selectedAttack.type
+                let ppAttack = getPPAttack(selectedAttack, playerMonster)
+                if(ppAttack===-1){
+                    ppAttack=selectedAttack.maxNumberMoves
+                }
+                let ppLeft = '\n '+ppAttack+'/'+selectedAttack.maxNumberMoves+' PP'
+                document.querySelector('#attackType').innerHTML = selectedAttack.type + ppLeft
                 document.querySelector('#attackType').style.color = selectedAttack.color
             })
     })
@@ -751,6 +756,189 @@ function attackHasPPLeft(attack, monster){
                         }else{
                             return false
                         }
+                    }
+                    break
+            }
+            break
+        default:
+            return true
+    }
+}
+
+function getPPAttack(attack, monster){
+    switch(monster.name){
+        case 'Skull Crasher':
+            switch(attack.name){
+                case 'RockWrecker':
+                    if(monsterXattack.SkullAttacks.RockWrecker===undefined){
+                        addPlayerAttack(monster, attack)
+                        return -1
+                    }else{
+                        return monsterXattack.SkullAttacks.RockWrecker.pp
+                    }
+                    break
+                case 'Fireball':
+                    if(monsterXattack.SkullAttacks.Fireball===undefined){
+                        addPlayerAttack(monster,attack)
+                        return -1
+                    }else{
+                        return monsterXattack.SkullAttacks.Fireball.pp
+                    }
+                    break
+                case 'PowerWhip':
+                    if(monsterXattack.SkullAttacks.PowerWhip===undefined){
+                        addPlayerAttack(monster,attack)
+                        return -1
+                    }else{
+                        return monsterXattack.SkullAttacks.PowerWhip.pp
+                    }
+                    break
+                case 'WaterStorm':
+                    if(monsterXattack.SkullAttacks.WaterStorm===undefined){
+                        addPlayerAttack(monster,attack)
+                        return -1
+                    }else{
+                        return monsterXattack.SkullAttacks.WaterStorm.pp
+                    }
+                    break
+                case 'Tackle':
+                    if(monsterXattack.SkullAttacks.Tackle===undefined){
+                        addPlayerAttack(monster,attack)
+                        return -1
+                    }else{
+                        return monsterXattack.SkullAttacks.Tackle.pp
+                    }
+                    break
+            }
+            break
+        case 'Draggle':
+        switch(attack.name){
+            case 'RockWrecker':
+                if(monsterXattack.DraggleAttacks.RockWrecker===undefined){
+                    addPlayerAttack(monster,attack)
+                    return -1
+                }else{
+                    return monsterXattack.DraggleAttacks.RockWrecker.pp>0
+                }
+                break
+            case 'Fireball':
+                if(monsterXattack.DraggleAttacks.Fireball===undefined){
+                    addPlayerAttack(monster,attack)
+                    return -1
+                }else{
+                    return monsterXattack.DraggleAttacks.Fireball.pp
+                }
+                break
+            case 'PowerWhip':
+                if(monsterXattack.DraggleAttacks.PowerWhip===undefined){
+                    addPlayerAttack(monster,attack)
+                    return -1
+                }else{
+                    return monsterXattack.DraggleAttacks.PowerWhip.pp
+                }
+                break
+            case 'WaterStorm':
+                if(monsterXattack.DraggleAttacks.WaterStorm===undefined){
+                    addPlayerAttack(monster,attack)
+                    return -1
+                }else{
+                    return monsterXattack.DraggleAttacks.WaterStorm.pp
+                }
+                break
+            case 'Tackle':
+                if(monsterXattack.DraggleAttacks.Tackle===undefined){
+                    addPlayerAttack(monster,attack)
+                    return true
+                }else{
+                    monsterXattack.DraggleAttacks.Tackle.pp
+                }
+                break
+        }
+        break
+        case 'Emby':
+        switch(attack.name){
+            case 'RockWrecker':
+                if(monsterXattack.EmbyAttacks.RockWrecker===undefined){
+                    addPlayerAttack(monster,attack)
+                    return -1
+                }else{
+                    return monsterXattack.EmbyAttacks.RockWrecker.pp
+                }
+                break
+            case 'Fireball':
+                if(monsterXattack.EmbyAttacks.Fireball===undefined){
+                    addPlayerAttack(monster,attack)
+                    return -1
+                }else{
+                    return monsterXattack.EmbyAttacks.Fireball.pp  
+                }
+                break
+            case 'PowerWhip':
+                if(monsterXattack.EmbyAttacks.PowerWhip===undefined){
+                    addPlayerAttack(monster,attack)
+                    return -1
+                }else{
+                    return monsterXattack.EmbyAttacks.PowerWhip.pp
+                }
+                break
+            case 'WaterStorm':
+                if(monsterXattack.EmbyAttacks.WaterStorm===undefined){
+                    addPlayerAttack(monster,attack)
+                    return -1
+                }else{
+                    return monsterXattack.EmbyAttacks.WaterStorm.pp
+                }
+                break
+            case 'Tackle':
+                if(monsterXattack.EmbyAttacks.Tackle===undefined){
+                    addPlayerAttack(monster,attack)
+                    return true
+                }else{
+                    return monsterXattack.EmbyAttacks.Tackle.pp
+                }
+                break
+        }
+        break
+        case 'Okto':
+            switch(attack.name){
+                case 'RockWrecker':
+                    if(monsterXattack.OktoAttacks.RockWrecker===undefined){
+                        addPlayerAttack(monster,attack)
+                        return -1
+                    }else{
+                        return (monsterXattack.OktoAttacks.RockWrecker.pp)
+                    }
+                    break
+                case 'Fireball':
+                    if(monsterXattack.OktoAttacks.Fireball===undefined){
+                        addPlayerAttack(monster,attack)
+                        return -1
+                    }else{
+                        return(monsterXattack.OktoAttacks.Fireball.pp)
+                    }
+                    break
+                case 'PowerWhip':
+                    if(monsterXattack.OktoAttacks.PowerWhip===undefined){
+                        addPlayerAttack(monster,attack)
+                        return -1
+                    }else{
+                        return(monsterXattack.OktoAttacks.PowerWhip.pp) 
+                    }
+                    break
+                case 'WaterStorm':
+                    if(monsterXattack.OktoAttacks.WaterStorm===undefined){
+                        addPlayerAttack(monster,attack)
+                        return -1
+                    }else{
+                        return(monsterXattack.OktoAttacks.WaterStorm.pp)                            
+                    }
+                    break
+                case 'Tackle':
+                    if(monsterXattack.OktoAttacks.Tackle===undefined){
+                        addPlayerAttack(monster,attack)
+                        return -1
+                    }else{
+                        return(monsterXattack.OktoAttacks.Tackle.pp)
                     }
                     break
             }
