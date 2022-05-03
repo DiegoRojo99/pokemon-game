@@ -8,5 +8,15 @@ const items = {
         image: {
             src: 'img/items/briefcase.png'
         }
+    },
+    BigPotion: {
+        name: 'BigPotion',
+        shown: 'Big Potion',
+        health: 25,
+        pp: 0,
+        inventory: 10,
+        image: {
+            src: 'img/items/briefcase.png'
+        }
     }
 }

@@ -467,6 +467,44 @@ window.addEventListener('keyup',(e) => {
     }
 })
 
+//Apply items function, takes the id of the element
+function applyInventoryItem(elementName){
+    switch(elementName){
+        case 'item-2':
+            items.BigPotion.inventory-=1
+            break
+        case 'item-1':
+            items.SmallPotion.inventory-=1
+            break
+        default:
+            break
+    }
+    updateItemQuantity(elementName)
+}
+
+function updateItemQuantity(elementNameP){
+    let itemInfo
+    switch(elementNameP){
+        case 'item-1':
+            itemInfo=items.SmallPotion
+            break
+        case 'item-2':
+            itemInfo=items.BigPotion
+            break
+    }
+    let itemP=elementNameP+'-p'
+    document.getElementById(itemP).innerHTML=itemInfo.shown+' x'+itemInfo.inventory
+}
 //The items appear here
 document.getElementById('item-1-img').src=items.SmallPotion.image.src
 document.getElementById('item-1-p').innerHTML=items.SmallPotion.shown+' x'+items.SmallPotion.inventory
+document.querySelectorAll('img').forEach((image) => {
+    image.addEventListener('mouseenter', (e) => {
+        if(e.fromElement.className==='grid-item'){
+            console.log(e.fromElement.id)
+            applyInventoryItem(e.fromElement.id)
+        }
+    })
+})
+document.getElementById('item-2-img').src=items.BigPotion.image.src
+document.getElementById('item-2-p').innerHTML=items.BigPotion.shown+' x'+items.BigPotion.inventory
