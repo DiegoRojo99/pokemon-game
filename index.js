@@ -374,6 +374,20 @@ function changeMonster(nameMonster){
             monsterRightImage.src='./img/monsters/walking/skullRight.png'
             monsterAnimationSelected='Skull'
             break
+        case 'Emby':
+            monsterDownImage.src='./img/monsters/embyFront.png'
+            monsterUpImage.src='./img/monsters/embyBack.png'
+            monsterLeftImage.src='./img/monsters/walking/oktoLeft.png'
+            monsterRightImage.src='./img/monsters/walking/oktoRight.png'
+            monsterAnimationSelected='Okto'
+            break
+        case 'Draggle':
+            monsterDownImage.src='./img/monsters/draggleSprite.png'
+            monsterUpImage.src='./img/monsters/walking/oktoBack.png'
+            monsterLeftImage.src='./img/monsters/walking/oktoLeft.png'
+            monsterRightImage.src='./img/monsters/walking/oktoRight.png'
+            monsterAnimationSelected='Okto'
+            break
         default:
             break
     }
@@ -384,6 +398,12 @@ document.querySelector('#monster1').addEventListener('click', (e) =>{
 })
 document.querySelector('#monster2').addEventListener('click', (e) =>{
     changeMonster('Skull')
+})
+document.querySelector('#monster3').addEventListener('click', (e) =>{
+    changeMonster('Emby')
+})
+document.querySelector('#monster4').addEventListener('click', (e) =>{
+    changeMonster('Draggle')
 })
 
 // Inventory displays

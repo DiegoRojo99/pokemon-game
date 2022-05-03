@@ -25,6 +25,12 @@ function selectMonsterBasedOnAnimation(){
         case 'Skull':
             playerMonster = new Monster(monsters.Skull)
             break
+        case 'Draggle':
+            playerMonster = new Monster(monsters.Draggle)
+            break
+        case 'Emby':
+            playerMonster = new Monster(monsters.Emby)
+            break
         default:
             playerMonster = new Monster(monsters.Draggle)
     }
