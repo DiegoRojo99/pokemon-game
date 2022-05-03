@@ -393,6 +393,7 @@ class Monster extends Sprite{
                 break
         }
 
+        addPlayerAttack(this, attack)
         removePPFromAttack(attack.name, this.name)
     }
 }
@@ -414,11 +415,76 @@ class Boundary{
 
 function removePPFromAttack(attackName, monsterName){
     switch(monsterName){
+        case 'Emby':
+            switch(attackName){
+                case 'PowerWhip':  
+                    monsterXattack.EmbyAttacks.PowerWhip.pp-=1
+                    break
+                case 'Fireball':  
+                    monsterXattack.EmbyAttacks.Fireball.pp-=1
+                    break
+                case 'RockWrecker':  
+                    monsterXattack.EmbyAttacks.RockWrecker.pp-=1
+                    break
+                case 'WaterStorm':  
+                    monsterXattack.EmbyAttacks.WaterStorm.pp-=1
+                    break
+                case 'Tackle':
+                    monsterXattack.EmbyAttacks.Tackle.pp-=1
+                    break
+            }
+            break
+        case 'Draggle':
+            switch(attackName){
+                case 'PowerWhip':  
+                    monsterXattack.DraggleAttacks.PowerWhip.pp-=1
+                    break
+                case 'Fireball':  
+                    monsterXattack.DraggleAttacks.Fireball.pp-=1
+                    break
+                case 'RockWrecker':  
+                    monsterXattack.DraggleAttacks.RockWrecker.pp-=1
+                    break
+                case 'WaterStorm':  
+                    monsterXattack.DraggleAttacks.WaterStorm.pp-=1
+                    break
+                case 'Tackle':
+                    monsterXattack.DraggleAttacks.Tackle.pp-=1
+                    break
+            }
+            break
+        case 'Skull Crasher':
+                switch(attackName){
+                    case 'PowerWhip':  
+                        monsterXattack.SkullAttacks.PowerWhip.pp-=1
+                        break
+                    case 'Fireball':  
+                        monsterXattack.SkullAttacks.Fireball.pp-=1
+                        break
+                    case 'RockWrecker':  
+                        monsterXattack.SkullAttacks.RockWrecker.pp-=1
+                        break
+                    case 'WaterStorm':  
+                        monsterXattack.SkullAttacks.WaterStorm.pp-=1
+                        break
+                    case 'Tackle':
+                        monsterXattack.SkullAttacks.Tackle.pp-=1
+                        break
+                }
+                break
         case 'Okto':
             switch(attackName){
+                case 'PowerWhip':  
+                    monsterXattack.OktoAttacks.PowerWhip.pp-=1
+                    break
+                case 'Fireball':  
+                    monsterXattack.OktoAttacks.Fireball.pp-=1
+                    break
+                case 'RockWrecker':  
+                    monsterXattack.OktoAttacks.RockWrecker.pp-=1
+                    break
                 case 'WaterStorm':  
                     monsterXattack.OktoAttacks.WaterStorm.pp-=1
-                    console.log('Waterstorm has '+monsterXattack.OktoAttacks.WaterStorm.pp+' moves left')
                     break
                 case 'Tackle':
                     monsterXattack.OktoAttacks.Tackle.pp-=1

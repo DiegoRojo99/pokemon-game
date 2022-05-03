@@ -4,7 +4,7 @@ const monsterXattack = {
     EmbyAttacks:{
 
     },
-    draggleAttacks:{
+    DraggleAttacks:{
 
     },
     SkullAttacks:{
