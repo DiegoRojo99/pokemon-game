@@ -1,17 +1,20 @@
 function updateMonsterHealth(name, newHealth){
     switch(name){
-        case 'Emby':
-            monsters.Emby.health = newHealth
-            break
-        case 'Draggle':
-            monsters.Draggle.health = newHealth
-            break
-        case 'Skull':
-            monsters.Skull.health = newHealth
-            break
         case 'Okto':
             monsters.Okto.health = newHealth
             document.getElementById('monster-1-life').innerHTML=newHealth+'/'+monsters.Okto.maxHealth+' HP'
+            break
+        case 'Skull Crasher':
+            monsters.Skull.health = newHealth
+            document.getElementById('monster-2-life').innerHTML=newHealth+'/'+monsters.Skull.maxHealth+' HP'
+            break
+        case 'Emby':
+            monsters.Emby.health = newHealth
+            document.getElementById('monster-3-life').innerHTML=newHealth+'/'+monsters.Emby.maxHealth+' HP'
+            break
+        case 'Draggle':
+            monsters.Draggle.health = newHealth
+            document.getElementById('monster-4-life').innerHTML=newHealth+'/'+monsters.Draggle.maxHealth+' HP'
             break
     }
 }
@@ -96,6 +99,7 @@ function initBattle(){
         y: 325
     }
     
+    enemy.health=enemy.maxHealth
     enemy.isEnemy = true
     playerMonster.isEnemy = false
 
@@ -140,6 +144,7 @@ function initBattle(){
                     })
                 })
 
+                console
                 updateMonsterHealth(playerMonster.name, playerMonster.health)
             }
 
