@@ -114,7 +114,7 @@ const monsterSprite = new Sprite({
         max: 4,
         hold: 30
     },
-    animate: true,
+    animate: false,
     sprites: {
         up: monsterUpImage,
         down: monsterDownImage,
@@ -199,7 +199,6 @@ const battle={
 drawDown(monsterSprite)
 
 function animate(){
-
     document.querySelector('#inventory-briefcase').style.display = 'block'
     
     const animationId = window.requestAnimationFrame(animate)
@@ -268,6 +267,7 @@ function animate(){
    
     if(keys.w.pressed && lastKey === 'w'){ 
         player.animate=true
+        monsterSprite.animate=true
         player.image = player.sprites.up
         drawUp(monsterSprite)
         for( let i = 0; i < boundaries.length; i++){
@@ -290,6 +290,7 @@ function animate(){
         }
     } else if(keys.a.pressed && lastKey === 'a'){ 
         player.animate=true
+        monsterSprite.animate=true
         player.image = player.sprites.left
         drawLeft(monsterSprite)
         for( let i = 0; i < boundaries.length; i++){
@@ -312,6 +313,7 @@ function animate(){
         }
     } else if(keys.s.pressed && lastKey === 's'){
         player.animate=true 
+        monsterSprite.animate=true
         player.image = player.sprites.down
         drawDown(monsterSprite)
         for( let i = 0; i < boundaries.length; i++){
@@ -334,6 +336,7 @@ function animate(){
         }
     } else if(keys.d.pressed && lastKey === 'd'){
         player.animate=true 
+        monsterSprite.animate=true
         player.image = player.sprites.right
         drawRight(monsterSprite)
         for( let i = 0; i < boundaries.length; i++){
@@ -354,6 +357,11 @@ function animate(){
                 movable.position.x -= 3
             })
         }
+    }
+
+    //Stops the monster animation if it is not moving
+    if(!(keys.w.pressed || keys.a.pressed || keys.s.pressed || keys.d.pressed)){
+        monsterSprite.animate=false
     }
 }
 
