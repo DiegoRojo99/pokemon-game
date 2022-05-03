@@ -461,3 +461,4 @@ window.addEventListener('keyup',(e) => {
 
 //The items appear here
 document.getElementById('item-1-img').src=items.SmallPotion.image.src
+document.getElementById('item-1-p').innerHTML=items.SmallPotion.shown+' x'+items.SmallPotion.inventory
