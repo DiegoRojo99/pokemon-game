@@ -392,8 +392,8 @@ class Monster extends Sprite{
                 
                 break
         }
-        
-        console.log(recipient.name + ' has ' +recipient.health+' healthleft')
+
+        removePPFromAttack(attack.name, this.name)
     }
 }
 
@@ -409,5 +409,21 @@ class Boundary{
     draw(){
         c.fillStyle = 'rgba(255, 0, 0, 0)'
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
+    }
+}
+
+function removePPFromAttack(attackName, monsterName){
+    switch(monsterName){
+        case 'Okto':
+            switch(attackName){
+                case 'WaterStorm':  
+                    monsterXattack.OktoAttacks.WaterStorm.pp-=1
+                    console.log('Waterstorm has '+monsterXattack.OktoAttacks.WaterStorm.pp+' moves left')
+                    break
+                case 'Tackle':
+                    monsterXattack.OktoAttacks.Tackle.pp-=1
+                    break
+            }
+            break
     }
 }
