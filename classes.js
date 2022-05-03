@@ -71,6 +71,8 @@ class Monster extends Sprite{
         rotation = 0,
         isEnemy=false, 
         backImage,
+        maxHealth,
+        health,
         name,
         type,
         attacks
@@ -86,7 +88,8 @@ class Monster extends Sprite{
         
         this.backImage = new Image()
         this.backImage.src=backImage.src
-        this.health = 100
+        this.maxHealth = maxHealth
+        this.health = health
         this.isEnemy=isEnemy
         this.name=name
         this.type=type

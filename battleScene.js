@@ -1,3 +1,20 @@
+function updateMonsterHealth(name, newHealth){
+    switch(name){
+        case 'Emby':
+            monsters.Emby.health = newHealth
+            break
+        case 'Draggle':
+            monsters.Draggle.health = newHealth
+            break
+        case 'Skull':
+            monsters.Skull.health = newHealth
+            break
+        case 'Okto':
+            monsters.Okto.health = newHealth
+            document.getElementById('monster-1-life').innerHTML=newHealth+'/'+monsters.Okto.maxHealth+' HP'
+            break
+    }
+}
 
 const battleBattlegroundImage = new Image()
 battleBattlegroundImage.src = './img/bg/battleBackground.png'
@@ -82,7 +99,6 @@ function initBattle(){
     enemy.isEnemy = true
     playerMonster.isEnemy = false
 
-
     renderedSprites = [enemy, playerMonster]
     queue = []
     
@@ -123,6 +139,8 @@ function initBattle(){
                         }
                     })
                 })
+
+                updateMonsterHealth(playerMonster.name, playerMonster.health)
             }
 
             //Enemy attacks
@@ -155,6 +173,7 @@ function initBattle(){
                             }
                         })
                     })
+                    updateMonsterHealth(playerMonster.name, 0)
                 }
             })
         })

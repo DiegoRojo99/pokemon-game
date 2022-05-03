@@ -13,6 +13,7 @@ const monsters = {
         frames:{
             max: 4, hold: 30
         },
+        maxHealth: 100, health: 100,
         animate: true,
         name: 'Okto',
         type: 'Water',
@@ -31,6 +32,7 @@ const monsters = {
         frames:{
             max: 4, hold: 30
         },
+        maxHealth: 100, health: 100,
         animate: true,
         name: 'Skull Crasher',
         type: 'Fire',
@@ -48,6 +50,7 @@ const monsters = {
         frames:{
             max: 4, hold: 30
         },
+        maxHealth: 100, health: 100,
         animate: true,
         name: 'Emby',
         type: 'Fire',
@@ -65,6 +68,7 @@ const monsters = {
         frames:{
             max: 4, hold: 30
         },
+        maxHealth: 100, health: 100,
         animate: true,
         name: 'Draggle',
         type: 'Plant',
