@@ -413,7 +413,6 @@ function changeMonster(nameMonster){
         default:
             break
     }
-    
 }
 document.querySelector('#monster1').addEventListener('click', (e) =>{
     changeMonster('Okto')
@@ -487,10 +486,13 @@ function applyInventoryItem(elementName){
     switch(monsterAnimationSelected){
         case 'Draggle':
             monsterToApply=monsters.Draggle
+            break
         case 'Skull':
             monsterToApply=monsters.Skull
+            break
         case 'Emby':
             monsterToApply=monsters.Emby
+            break
         case 'Okto':
             monsterToApply=monsters.Okto
             break
