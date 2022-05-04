@@ -397,17 +397,17 @@ function changeMonster(nameMonster){
             monsterAnimationSelected='Skull'
             break
         case 'Emby':
-            monsterDownImage.src='./img/monsters/embyFront.png'
-            monsterUpImage.src='./img/monsters/embyBack.png'
-            monsterLeftImage.src='./img/monsters/walking/oktoLeft.png'
-            monsterRightImage.src='./img/monsters/walking/oktoRight.png'
+            monsterDownImage.src='./img/monsters/walking/embyFront.png'
+            monsterUpImage.src='./img/monsters/walking/embyBack.png'
+            monsterLeftImage.src='./img/monsters/walking/embyLeft.png'
+            monsterRightImage.src='./img/monsters/walking/embyRight.png'
             monsterAnimationSelected='Emby'
             break
         case 'Draggle':
-            monsterDownImage.src='./img/monsters/draggleSprite.png'
-            monsterUpImage.src='./img/monsters/walking/oktoBack.png'
-            monsterLeftImage.src='./img/monsters/walking/oktoLeft.png'
-            monsterRightImage.src='./img/monsters/walking/oktoRight.png'
+            monsterDownImage.src='./img/monsters/walking/draggleFront.png'
+            monsterUpImage.src='./img/monsters/walking/draggleBack.png'
+            monsterLeftImage.src='./img/monsters/walking/draggleLeft.png'
+            monsterRightImage.src='./img/monsters/walking/draggleRight.png'
             monsterAnimationSelected='Draggle'
             break
         default:
