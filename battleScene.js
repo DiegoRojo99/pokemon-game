@@ -850,7 +850,7 @@ function getPPAttack(attack, monster){
                     addPlayerAttack(monster,attack)
                     return true
                 }else{
-                    monsterXattack.DraggleAttacks.Tackle.pp
+                    return monsterXattack.DraggleAttacks.Tackle.pp
                 }
                 break
         }

@@ -394,7 +394,9 @@ class Monster extends Sprite{
         }
 
         addPlayerAttack(this, attack)
-        removePPFromAttack(attack.name, this.name)
+        if(this.isEnemy===false){
+            removePPFromAttack(attack.name, this.name)
+        }
     }
 }
 
